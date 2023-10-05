@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="view_test_odoo_filter" model="ir.ui.view">
+		<field name="name">test.odoo.filter</field>
+		<field name="model">test.odoo</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name" />
+			</search>
+		</field>
+	</record>
+
+	<record id="view_test_odoo_pivot" model="ir.ui.view">
+		<field name="name">test.odoo.pivot</field>
+		<field name="model">test.odoo</field>
+		<field name="arch" type="xml">
+			<pivot>
+				<field name="name" type="row" />
+				<field name="count" type="measure" />
+			</pivot>
+		</field>
+	</record>
+	<record id="view_test_odoo_tree" model="ir.ui.view">
+		<field name="name">test.odoo.tree</field>
+		<field name="model">test.odoo</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name" type="row" />
+				<field name="count" sum="SUM" />
+				<field name="unit_price" sum="SUM" />
+				<field name="total" sum="SUM" />
+			</tree>
+		</field>
+	</record>
+	<record id="view_test_odoo_form" model="ir.ui.view">
+		<field name="name">test.odoo.form</field>
+		<field name="model">test.odoo</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<group>
+							<field name="name" type="row" />
+							<field name="count" />
+						</group>
+						<group>
+							<field name="unit_price" />
+							<field name="total" />
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="action_test_odoo_form" model="ir.actions.act_window">
+		<field name="name">Test odoo</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">test.odoo</field>
+		<field name="view_mode">tree,pivot,form</field>
+	</record>
+
+	<menuitem id="menu_test_odoo_main" action="action_test_odoo_form" name="Test odoo" sequence="10" />
+	<menuitem id="menu_test_odoo" action="action_test_odoo_form" parent="menu_test_odoo_main"
+		sequence="100" />
+
+</odoo>
